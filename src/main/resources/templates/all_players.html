@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zawodnicy</title>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12" th:include="@{header}">
+        </div>
+
+        <div class="col-md-12">
+
+            <form class = "form-horizontal" th:action="@{/hello}">
+                <table class = "table">
+                    <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Imie</td>
+                        <td>Nazwisko</td>
+                        <td>Data urodzenia</td>
+                        <td>Nr licencji</td>
+                        <td>Klub</td>
+                        <td>Drużyna</td>
+                        <td>Pozycja</td>
+
+                    </tr>
+                    </thead>
+                    <tbody th:each="player : ${players}">
+                    <tr>
+                        <td th:text="${player.id}"/>
+                        <td th:text="${player.name}"/>
+                        <td th:text="${player.surname}"/>
+                        <td th:text="${player.birth_date}"/>
+                        <td th:text="${player.license}"/>
+                        <td th:text="${player.owningClubName}+' '+${player.owningClubTown}"/>
+                        <td th:text="${player.clubName}+' '+${player.clubTown}"/>
+                        <td th:text="${player.position}"/>
+
+                    </tr>
+                    </tbody>
+
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+<link rel="stylesheet" th:href="@{/all.min.css}"/>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+</body>
+</html>

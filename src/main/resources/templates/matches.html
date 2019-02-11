@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kluby</title>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12" th:include="@{header}">
+        </div>
+
+        <div class="col-md-12">
+            <table class = "table">
+                <thead>
+                <tr>
+                    <td>Kolejka</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody th:each="round : ${rounds}">
+                <tr>
+                    <td th:text="${round.matchRound}"/>
+                    <td><a th:href="${'/matches/' + round.matchRound}"> Zobacz kolejkę </a></td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+<link rel="stylesheet" th:href="@{/all.min.css}"/>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+</body>
+</html>

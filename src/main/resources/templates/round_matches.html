@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kolejki</title>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12" th:include="@{header}">
+        </div>
+
+        <div class="col-md-12">
+
+                <table class = "table">
+
+                    <div class="col-md-12">
+                        <h3 th:text="${round.intValue()}+'.'+ 'Kolejka'"/>
+                    </div>
+
+                    <thead>
+                    <tr>
+                        <td>Data</td>
+                        <td>Gospodarz</td>
+                        <td>Gość</td>
+                        <td>Wynik</td>
+                        <td>Wyniki setów</td>
+                        <td></td>
+
+                    </tr>
+                    </thead>
+                    <tbody th:each="match : ${matches}">
+                    <tr>
+                        <td th:text="${match.matchDate}"/>
+                        <td th:text="${match.teamAName} +' '+${match.teamATown} "/>
+                        <td th:text="${match.teamBName} +' '+${match.teamBTown} "/>
+                        <td th:text="${match.matchScore}"/>
+                        <td th:text="${match.setsScore}"/>
+                        <td><a th:href="${'/hello'}">Dodaj wynik</a></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+<link rel="stylesheet" th:href="@{/all.min.css}"/>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+</body>
+</html>
